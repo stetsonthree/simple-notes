@@ -1,0 +1,10 @@
+CRUD in Rails
+
+Create - add data
+Read - look at what's there
+Update - change data
+Delete - remove data
+
+                    Model
+                     ^ v
+URL ==> Routes => Controller => View
