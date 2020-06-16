@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_184521) do
+ActiveRecord::Schema.define(version: 2020_06_16_035352) do
 
   create_table "notebooks", force: :cascade do |t|
     t.string "title"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_06_15_184521) do
 
   create_table "pages", force: :cascade do |t|
     t.string "title"
-    t.string "position"
+    t.integer "position"
     t.integer "notebook_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
