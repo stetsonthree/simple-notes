@@ -1,25 +1,31 @@
 class NotebooksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_notebook, only: [:show, :edit, :update, :destroy]
+  before_action :add_index_breadcrumb, only: [:show, :new, :edit]
 
   # GET /notebooks
   # GET /notebooks.json
   def index
     @notebooks = current_user.notebooks
+    add_breadcrumb('Notebooks')
   end
 
   # GET /notebooks/1
   # GET /notebooks/1.json
   def show
+    add_breadcrumb(@notebook.title)
   end
 
   # GET /notebooks/new
   def new
     @notebook = Notebook.new
+    add_breadcrumb('New')
   end
 
   # GET /notebooks/1/edit
   def edit
+    add_breadcrumb(@notebook.title, notebook_path(@notebook))
+    add_breadcrumb('Edit')
   end
 
   # POST /notebooks
@@ -72,4 +78,9 @@ class NotebooksController < ApplicationController
     def notebook_params
       params.require(:notebook).permit(:title)
     end
+
+    def add_index_breadcrumb
+      add_breadcrumb('Notebooks', notebooks_path)
+    end
+    
 end
