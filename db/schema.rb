@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_191456) do
+ActiveRecord::Schema.define(version: 2020_07_22_225933) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(version: 2020_07_19_191456) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "image_elements", force: :cascade do |t|
+    t.integer "page_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["page_id"], name: "index_image_elements_on_page_id"
   end
 
   create_table "notebooks", force: :cascade do |t|
@@ -80,6 +87,7 @@ ActiveRecord::Schema.define(version: 2020_07_19_191456) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "image_elements", "pages"
   add_foreign_key "notebooks", "users"
   add_foreign_key "pages", "notebooks"
   add_foreign_key "paragraphs", "pages"
