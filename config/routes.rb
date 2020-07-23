@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :pages do
       resources :paragraphs
       resources :image_elements
+      resources :checklists
     end
   end
   devise_for :users
