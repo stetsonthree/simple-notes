@@ -3,4 +3,9 @@ class Page < ApplicationRecord
   has_many :paragraphs
   has_many :image_elements
   has_many :checklists
+
+  def elements
+    paragraphs + image_elements + checklists
+  end
+  
 end
