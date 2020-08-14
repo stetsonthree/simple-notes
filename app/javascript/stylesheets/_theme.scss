@@ -4,14 +4,42 @@ body {
   background-color: mcolor($theme-color, "lighten-5");
 }
 
-
 .top-stripe {
   background-color: mcolor($theme-color, "darken-4");
   width: 100%;
-  height: 20px;
+  padding: 5px;
+  a {
+    font-size: 13px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    &:hover {
+      color: mcolor($theme-color, "lighten-5");
+    }
+  }
 }
 .toolbar {
   background-color: mcolor($theme-color, "darken-3");
   width: 100%;
-  height: 40px;
+  padding: 5px;
+  .breadcrumb {
+    padding-left: 0;
+    background-color: transparent;
+    margin-bottom: 0;
+    .breadcrumb-item {
+      a {
+        color: mcolor($theme-color, "accent-2");
+      }
+      &::before {
+        color: mcolor($theme-color, "base");
+      }
+      &.active {
+        color: white;
+      }
+    }
+  }
+}
+
+.highlight-text {
+  color: mcolor($theme-color, "accent-2");
 }

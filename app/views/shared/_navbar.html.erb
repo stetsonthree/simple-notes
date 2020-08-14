@@ -1,32 +1,30 @@
-
-  <div class="top-stripe">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">NotesApp</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <% if user_signed_in? %>
-          <li class="nav-item">
-              <%= link_to 'My notebooks', notebooks_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to 'Register', new_user_registration_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+<div class="top-stripe">
+  <div class="container-fluid">
+    <div class="d-flex justify-content-between">
+      <a href="/">NOTES <span class="highlight-text">APP</span></a>
+      <% if user_signed_in? %>
+        <%= link_to 'LOG OUT', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'SIGN IN', new_user_session_path %>
+      <% end %>
     </div>
   </div>
-  <div class="toolbar">
-    <div class="container-fluid">
-    </div>
+</div>
+<div class="toolbar">
+  <div class="container-fluid">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <% @breadcrumbs.each do |breadcrumb| %>
+        <% if breadcrumb[:path].nil? %>
+          <li class="breadcrumb-item active" aria-current="page">
+            <%= breadcrumb[:label] %>
+          </li>
+        <% else %>
+          <li class="breadcrumb-item">
+          <%= link_to breadcrumb[:label], breadcrumb[:path] %>
+          </li>
+        <% end %>
+      <% end %>
+    </ol>
   </div>
+</div>
