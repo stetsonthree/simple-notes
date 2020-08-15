@@ -12,19 +12,22 @@
 </div>
 <div class="toolbar">
   <div class="container-fluid">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <% @breadcrumbs.each do |breadcrumb| %>
-        <% if breadcrumb[:path].nil? %>
-          <li class="breadcrumb-item active" aria-current="page">
-            <%= breadcrumb[:label] %>
-          </li>
-        <% else %>
-          <li class="breadcrumb-item">
-          <%= link_to breadcrumb[:label], breadcrumb[:path] %>
-          </li>
+    <div class="d-flex justify-content-between">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <% @breadcrumbs.each do |breadcrumb| %>
+          <% if breadcrumb[:path].nil? %>
+            <li class="breadcrumb-item active" aria-current="page">
+              <%= breadcrumb[:label] %>
+            </li>
+          <% else %>
+            <li class="breadcrumb-item">
+            <%= link_to breadcrumb[:label], breadcrumb[:path] %>
+            </li>
+          <% end %>
         <% end %>
-      <% end %>
-    </ol>
+      </ol>
+      <%= yield(:tools) %>
+    </div>
   </div>
 </div>
